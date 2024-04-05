@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Inheritance allows derived shape classes (Circle, Rectangle, etc.) to inherit common methods from a base Shape class, such as area() and perimeter(). Polymorphism ensures that the correct area and perimeter calculations specific to each shape are executed at runtime, using the overridden methods.
+
+class Shape {
+public:
+    double area() {
+        return 0.0;
+    }
+
+    double perimeter() {
+        return 0.0;
+    }
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) {
+        radius = r;
+    }
+
+    double area() {
+        return M_PI * radius * radius;
+    }
+
+    double perimeter() {
+        return 2 * M_PI * radius;
+    }
+
+    double getradius() {
+        return radius;
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double length;
+    double width;
+
+public:
+    Rectangle(double l, double w) {
+        length = l;
+        width = w;
+    }
+
+    double area() {
+        return length * width;
+    }
+
+    double perimeter() {
+        return 2 * (length + width);
+    }
+
+    double getlength() {
+        return length;
+    }
+
+    double getwidth() {
+        return width;
+    }
+};
+
+int main() {
+    Circle circle(5);
+    Rectangle rectangle(4, 6);
+
+    cout << "Circle - Radius: " << circle.getradius() << endl;
+    cout << "Circle - Area: " << circle.area() << endl;
+    cout << "Circle - Perimeter: " << circle.perimeter() << endl;
+
+    cout << "\nRectangle - Length: " << rectangle.getlength() << ", Width: " << rectangle.getwidth() << endl;
+    cout << "Rectangle - Area: " << rectangle.area() << endl;
+    cout << "Rectangle - Perimeter: " << rectangle.perimeter() << endl;
+
+    return 0;
+}
